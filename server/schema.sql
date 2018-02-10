@@ -1,13 +1,18 @@
+DROP DATABASE IF EXISTS chat;
+
 CREATE DATABASE chat;
 
 USE chat;
 
+DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
   user_id INT AUTO_INCREMENT,
   user_name VARCHAR(25),
   PRIMARY KEY (user_id)
 );
+
+DROP TABLE IF EXISTS messages; 
 
 CREATE TABLE messages (
   id INT AUTO_INCREMENT,

@@ -14,11 +14,10 @@ module.exports = {
     }, // a function which produces all the messages
     post: function(userName, message, roomName, callback) {
       //var queryString = 'SELECT (userName, message, roomName) {
-      console.log('models post messages');
       var queryString = 'INSERT INTO messages (user_id, room_name, text)' + 
         ` VALUES ((SELECT user_id FROM users WHERE user_name = '${userName}'),` + 
         ` "${roomName}", "${message}");`; 
-      
+        
       db.query(queryString, function(err, response) {
         if (err) {
           console.log(err);
@@ -34,14 +33,12 @@ module.exports = {
     // Ditto as above.
     get: function () {},
     post: function (userName, callback) {
-      console.log('users post', userName);
       var queryString = `INSERT INTO users (users.user_name) VALUES ('${userName}');`;
       db.query(
         queryString, function(err, results) {
           if (err) {
             console.log(err, 'this is the err');
           } else {
-            console.log(results, 'therese are teh results');
             console.log('done!');
           }
           callback();
